@@ -41,10 +41,12 @@ for e in elems:
 
 # gather only article links from today
 pagelinks = []
+todays_date = str(datetime.today().strftime('%Y-%m-%d'))
+# todays_date = '2020-01-28'
 
 for i in items:
     url = i[0]
-    if i[3] == str(datetime.today().strftime('%Y-%m-%d')):
+    if i[3] == todays_date:
         pagelinks.append(['http://bbc.com'+url, i[1], i[2], i[3]])
 
 
@@ -80,7 +82,6 @@ for i, meta in enumerate(pagelinks):
 print("[INFO] Task complete.")
 
 # create csv
-todays_date = str(datetime.today().strftime('%Y-%m-%d'))
 output_file = '/Users/apple/igbo_corpus/igbo_bbc_'+todays_date+'.csv'
 with open(output_file, 'w') as f:
         writer = csv.writer(f)
